@@ -6,3 +6,46 @@ dark-blue - #134d71;
 white - #ffffff;
 black - #000000;
 */
+
+body {
+  background: rgb(19, 77, 113);
+  background: linear-gradient(
+    180deg,
+    rgba(19, 77, 113, 1) 0%,
+    rgba(247, 228, 191, 1) 100%
+  );
+  height: 100vh;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#header-text {
+  color: white;
+}
+
+#message-type-text {
+  color: white;
+}
+
+.radio-btn-selector {
+  display: flex;
+}
+
+.block {
+  background-color: #ffffff;
+}
+
+.radio-btn {
+  font-style: italic;
+}
+
+.message-section {
+  background-color: #ffffff;
+}
+
+#bell-img {
+  width: 128px;
+}
