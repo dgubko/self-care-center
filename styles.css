@@ -20,6 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: Quicksand;
 }
 
 #header-text {
@@ -28,18 +29,29 @@ body {
 
 #message-type-text {
   color: white;
+  font-size: 24px;
+  margin-bottom: 6px;
 }
 
-.radio-btn-selector {
-  display: flex;
-}
-
-.block {
+.input-box {
   background-color: #ffffff;
+  width: 600px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+.input-box > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .radio-btn {
   font-style: italic;
+}
+
+#radio-btn2 {
+  margin-left: 180px;
 }
 
 .message-section {
@@ -47,5 +59,44 @@ body {
 }
 
 #bell-img {
-  width: 128px;
+  width: 72px;
+}
+
+#message-box {
+  background-color: #ffffff;
+  width: 750px;
+  height: 150px;
+  margin-top: 128px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+#recieve-msg-btn {
+  margin-top: 20px;
+  background-color: #134d71;
+  color: #ffffff;
+  padding: 5px 40px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#recieve-msg-btn:hover {
+  transform: scale(1.02);
+}
+
+#recieve-msg-btn:active {
+  transform: scale(0.98);
+}
+
+.radio-btn-selector {
+  margin-top: 20px;
+}
+
+#output {
+  text-align: center;
+  width: 100%;
+  display: none;
 }
