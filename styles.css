@@ -35,7 +35,7 @@ body {
 .input-box {
   background-color: #ffffff;
   width: 600px;
-  height: 100px;
+  height: 120px;
   border-radius: 10px;
 }
 
@@ -82,11 +82,37 @@ body {
   border-radius: 4px;
 }
 
+#recieve-msg-btn:disabled:hover {
+  transform: scale(1);
+}
+
+#recieve-msg-btn:disabled {
+  opacity: 0.4;
+}
+
 #recieve-msg-btn:hover {
   transform: scale(1.02);
 }
 
 #recieve-msg-btn:active {
+  transform: scale(0.98);
+}
+
+#clear-btn {
+  background-color: #134d71;
+  color: #ffffff;
+  margin-top: 3px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#clear-btn:hover {
+  transform: scale(1.02);
+}
+
+#clear-btn:active {
   transform: scale(0.98);
 }
 
