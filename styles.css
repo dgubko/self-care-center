@@ -6,6 +6,7 @@ dark-blue - #134d71;
 white - #ffffff;
 black - #000000;
 */
+
 body {
   background: rgb(19, 77, 113);
   background: linear-gradient(
@@ -81,6 +82,7 @@ body {
   cursor: pointer;
   border-radius: 4px;
 }
+
 
 #recieve-msg-btn:disabled:hover {
   transform: scale(1);
