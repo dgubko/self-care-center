@@ -62,7 +62,7 @@ body {
   width: 72px;
 }
 
-#message-box {
+.message-box {
   background-color: #ffffff;
   width: 750px;
   height: 150px;
@@ -71,6 +71,7 @@ body {
   align-items: center;
   border-radius: 10px;
   justify-content: center;
+  position: relative;
 }
 
 #recieve-msg-btn {
@@ -83,20 +84,19 @@ body {
   border-radius: 4px;
 }
 
-
-#recieve-msg-btn:disabled:hover {
+button:disabled:hover {
   transform: scale(1);
 }
 
-#recieve-msg-btn:disabled {
+button:disabled {
   opacity: 0.4;
 }
 
-#recieve-msg-btn:hover {
+button:hover {
   transform: scale(1.02);
 }
 
-#recieve-msg-btn:active {
+button:active {
   transform: scale(0.98);
 }
 
@@ -110,14 +110,6 @@ body {
   border-radius: 4px;
 }
 
-#clear-btn:hover {
-  transform: scale(1.02);
-}
-
-#clear-btn:active {
-  transform: scale(0.98);
-}
-
 .radio-btn-selector {
   margin-top: 20px;
 }
@@ -125,6 +117,66 @@ body {
 #output {
   text-align: center;
   width: 100%;
+}
+
+.favorite {
+  background: none;
+  border: none;
+}
+
+.favorite > img {
+  width: 30px;
+}
+
+.buttons {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  display: flex;
+}
+
+#favBtn {
+  background-color: #134d71;
+  color: #ffffff;
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.fav-box {
+  background-color: #ffffff;
+  width: 750px;
+  height: 400px;
+  overflow-y: scroll;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+#go-backBtn {
+  background-color: #134d71;
+  color: #ffffff;
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+}
+
+li > button {
+  height: min-content;
+  margin-left: 8px;
+  background-color: #134d71;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .hidden {
