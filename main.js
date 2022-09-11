@@ -4,6 +4,74 @@ var affirmation = document.querySelector("#radio-btn1");
 var mantra = document.querySelector("#radio-btn2");
 var displayMessage = document.querySelector("#output");
 var bellImg = document.querySelector("#bell-img");
+var likeBtn = document.querySelector("#likeBtn");
+var unlikeBtn = document.querySelector("#unlikeBtn");
+var favMsg = document.querySelector("#favBtn");
+var msgBox = document.querySelector(".message-box");
+var inputBox = document.querySelector(".input-box");
+var favBox = document.querySelector(".fav-box");
+var typeOfMsg = document.querySelector("#message-type-text");
+var goBackBtn = document.querySelector("#go-backBtn");
+var likedMessages = [];
+
+receiveMsgBtn.addEventListener("click", getRandomMessage);
+affirmation.addEventListener("click", show);
+mantra.addEventListener("click", show);
+clearBtn.addEventListener("click", clear);
+likeBtn.addEventListener("click", likeBtnChange);
+unlikeBtn.addEventListener("click", deleteFavMessage);
+favMsg.addEventListener("click", showFavorites);
+goBackBtn.addEventListener("click", goBack);
+favBox.addEventListener("click", deleteFavFromList);
+
+function displayFavElements() {
+  favBox.innerHTML = "";
+  for (var i = 0; i < likedMessages.length; i++) {
+    favBox.innerHTML += `
+      <li>
+        <p>${likedMessages[i]}</p>
+        <button class="deleteBtn">X</button>
+      </li>
+    `;
+  }
+}
+
+function deleteFavFromList(event) {
+  if (event.target.classList.contains("deleteBtn")) {
+    for (var i = 0; i < likedMessages.length; i++) {
+      if (likedMessages[i] === event.target.previousElementSibling.innerText) {
+        if (likedMessages[i] === displayMessage.innerText) {
+          likeBtn.classList.remove("hidden");
+          unlikeBtn.classList.add("hidden");
+        }
+        likedMessages.splice(i, 1);
+        event.target.closest("li").remove();
+      }
+    }
+    if (!likedMessages.length) {
+      favBox.innerHTML = `<p>You don't have any favorite messages so far!</p>`;
+    }
+  }
+}
+
+function goBack() {
+  goBackBtn.classList.add("hidden");
+  inputBox.classList.remove("hidden");
+  msgBox.classList.remove("hidden");
+  favBox.classList.add("hidden");
+  typeOfMsg.innerText = "Which type of message?";
+}
+
+function showFavorites() {
+  goBackBtn.classList.remove("hidden");
+  inputBox.classList.add("hidden");
+  msgBox.classList.add("hidden");
+  favBox.classList.remove("hidden");
+  typeOfMsg.innerText = "Favorites";
+  if (likedMessages.length) {
+    displayFavElements();
+  }
+}
 
 function randomize(array) {
   var randomIndex = Math.floor(Math.random() * array.length);
@@ -19,6 +87,13 @@ function getRandomMessage() {
   bellImg.classList.add("hidden");
   displayMessage.classList.remove("hidden");
   clearBtn.classList.remove("hidden");
+  likeBtn.classList.remove("hidden");
+  unlikeBtn.classList.add("hidden");
+  favMsg.classList.remove("hidden");
+  if (likedMessages.includes(randomizedItem)) {
+    likeBtn.classList.add("hidden");
+    unlikeBtn.classList.remove("hidden");
+  }
 }
 
 function clear() {
@@ -28,21 +103,31 @@ function clear() {
   clearBtn.classList.add("hidden");
   receiveMsgBtn.setAttribute("disabled", true);
   selected.checked = false;
+  likeBtn.classList.add("hidden");
+  unlikeBtn.classList.add("hidden");
+  favMsg.classList.add("hidden");
+  likedMessages = [];
 }
 
 function show() {
   receiveMsgBtn.removeAttribute("disabled");
 }
 
-// 0 event click on button
-// 1 define selevted category
-// 2 create click event
-// 3 get randomized item
-// 4 send value to <p> and make it visible (hidden by the default)
-// 5 hide bell image
-// 6 check results
+function likeBtnChange() {
+  likeBtn.classList.add("hidden");
+  unlikeBtn.classList.remove("hidden");
+  saveFavMessage();
+}
 
-receiveMsgBtn.addEventListener("click", getRandomMessage);
-affirmation.addEventListener("click", show);
-mantra.addEventListener("click", show);
-clearBtn.addEventListener("click", clear);
+function saveFavMessage() {
+  likedMessages.push(displayMessage.innerText);
+}
+
+function deleteFavMessage() {
+  likeBtn.classList.remove("hidden");
+  unlikeBtn.classList.add("hidden");
+  for (var i = 0; i < likedMessages.length; i++)
+    if (displayMessage.innerText === likedMessages[i]) {
+      likedMessages.splice(i, 1);
+    }
+}
